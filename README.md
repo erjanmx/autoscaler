@@ -189,7 +189,7 @@ You can use default `/stats/active_connections` or specify your custom endpoint 
 
 #### Complexity of nginx probe
 
-Autoscaling webs is quite complex. It uses [ngx_http_stub_status_module](https://nginx.org/libxslt/en/docs/http/ngx_http_stub_status_module.html) to provide information about Nginx process stastistics we care about active connections only.
+Autoscaling webs is quite complex. It uses [ngx_http_stub_status_module](https://nginx.org/libxslt/en/docs/http/ngx_http_stub_status_module.html) to provide information about Nginx process statistics we care about active connections only.
 
 To minimize "overreaction" atuoscaler gathers information for couple seconds - it runs stat gathering `nginx.consecutive_reads` times with `nginx.timeout` break in between for each pod. So if it has 5 pods, 3 consecutive reads and 1 second timeout it runs it 15 times over 3 seconds in total. After gathering information it applies statistic (median, average or maximum) to normalize output and based on that Autoscaler decides what to do.
 
